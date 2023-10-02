@@ -3,7 +3,7 @@
 	import { Check, Document } from '$lib/icons';
 	import { slide } from 'svelte/transition';
 
-	let count = 4;
+	let count = 0;
 
 	function increment() {
 		count += 1;
