@@ -1,6 +1,6 @@
 <script>
 	import { Hendelse } from '$lib/components';
-	import { Check, Document } from '$lib/icons';
+	import { Check, Calendar } from '$lib/icons';
 	import { slide } from 'svelte/transition';
 
 	let count = 0;
@@ -24,13 +24,15 @@
 	>
 </div>
 
-<div class="p-4 py-6 rounded-lg border border-zinc-200 shadow-lg bg-white max-w-xl mx-auto lg:px-8">
+<div
+	class="p-4 py-6 rounded-lg border border-zinc-200 shadow-md lg:shadow-lg bg-white max-w-xl mx-auto lg:px-8"
+>
 	<h1 class="mb-6 text-lg lg:text-xl font-semibold text-gray-800 inline-flex items-center gap-x-3">
-		<Document /> Sak opprettet
+		<Calendar /> Hendelser
 	</h1>
 
 	<ol class="relative border-l border-gray-200 ml-2.5">
-		<Hendelse dato="20. september 2023" tittel="Wasim opprettet saken">
+		<Hendelse dato="20. september 2023" tittel="Sak opprettet">
 			<span class="italic">Wasim</span> opprettet saken med navn "<span class="font-medium"
 				>Avtaleforhandlinger</span
 			>".
@@ -62,7 +64,7 @@
 			transition:slide
 			class="text-lg -mt-10 lg:text-xl font-semibold text-gray-800 inline-flex items-center gap-x-3"
 		>
-			<Check /> Sak avsluttet
+			<Check /> Saken er avsluttet
 		</h1>
 	{/if}
 </div>
