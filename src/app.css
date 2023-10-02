@@ -12,10 +12,5 @@
 @tailwind utilities;
 
 html {
-	@apply antialiased;
-}
-
-html,
-body {
-	@apply h-full;
+	@apply antialiased bg-zinc-50;
 }

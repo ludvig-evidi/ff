@@ -1,1 +1,1 @@
-export { default as Hendelse } from './Hendelse.svelte';
+export { default as Hendelse } from './Hendelse.svelte'
