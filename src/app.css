@@ -12,5 +12,36 @@
 @tailwind utilities;
 
 html {
-	@apply antialiased bg-zinc-50;
+	@apply bg-stone-100 antialiased;
+}
+
+html,
+body {
+	@apply min-h-full;
+}
+
+@layer components {
+	.card {
+		@apply mx-auto flex h-fit w-full flex-col rounded-lg  border border-zinc-200 bg-white p-4 py-6 shadow-md lg:px-8;
+
+		h2 {
+			@apply text-xl font-semibold;
+		}
+
+		h3 {
+			@apply font-semibold;
+		}
+
+		p {
+			@apply leading-7;
+		}
+
+		button {
+			@apply w-48 rounded bg-red-600 px-4 py-2 text-sm font-semibold text-white hover:bg-red-500;
+		}
+	}
+
+	.card_timeline h3 {
+		@apply inline-flex items-center gap-x-4 text-lg text-zinc-900 first:mb-5 last:mt-5;
+	}
 }
