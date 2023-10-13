@@ -1,32 +1,28 @@
 <script lang="ts">
-	import { saker } from './saker'
+	import { saker, type Sak } from './saker'
 
-	const casesFilters = ['Aktiv', 'Avsluttet', 'Videresendt', 'Feilregistrert']
-	const cards: { cases: number; title: string }[] = [
-		{ cases: saker.individsaker.length, title: 'Individsaker' },
-		{ cases: saker.kollektive_saker.length, title: 'Kollektive saker' },
-		{ cases: saker.organisatoriske_saker.length, title: 'Organisatoriske saker' },
-		{ cases: saker.underliggende_saker.length, title: 'Saker i undergrupper' }
-	]
+	let aktivtFilter = 'Aktiv'
 
-	$: activeCase = cards[0].title
-	let activeCases = saker.individsaker
+	$: aktivTabell = saker[0]
+	$: filteredAktivTabell = aktivTabell.tabell.filter((kolonne) => kolonne.status === aktivtFilter)
 
-	$: caseFilter = 'Aktiv'
+	function changeTable(index: number) {
+		aktivtFilter = 'Aktiv'
+		aktivTabell = saker[index]
+	}
 
-	$: switch (activeCase) {
-		case 'Individsaker':
-			activeCases = saker.individsaker.filter((entry) => entry.status === caseFilter)
-			break
-		case 'Kollektive saker':
-			activeCases = saker.kollektive_saker.filter((entry) => entry.status === caseFilter)
-			break
-		case 'Organisatoriske saker':
-			activeCases = saker.organisatoriske_saker.filter((entry) => entry.status === caseFilter)
-			break
-		case 'Saker i undergrupper':
-			activeCases = saker.underliggende_saker.filter((entry) => entry.status === caseFilter)
-			break
+	function getActiveCases(tabell: Sak[]) {
+		let activeCount = 0
+
+		activeCount = tabell.reduce((count, sak) => {
+			if (sak.status === 'Aktiv') {
+				return count + 1
+			} else {
+				return count
+			}
+		}, 0)
+
+		return activeCount
 	}
 </script>
 
@@ -40,8 +36,8 @@
 	</div>
 
 	<div class="not-prose mx-auto my-12 grid grid-cols-1 gap-6 sm:grid-cols-4">
-		{#each cards as { cases, title }, index}
-			<button on:click={() => (activeCase = title)}>
+		{#each saker as { tabellNavn, tabell }, index}
+			<button on:click={() => changeTable(index)}>
 				<label class="card caseCard cursor-pointer">
 					<input
 						class="box-content hidden h-full w-full"
@@ -49,8 +45,8 @@
 						type="radio"
 						checked={index === 0}
 					/>
-					<h3 class="text-3xl font-bold">{cases}</h3>
-					<h4 class="mt-3 font-medium text-gray-500">{title}</h4>
+					<h3 class="text-3xl font-bold">{getActiveCases(tabell)}</h3>
+					<h4 class="mt-3 font-medium text-gray-500">Aktive {tabellNavn}</h4>
 				</label>
 			</button>
 		{/each}
@@ -59,7 +55,7 @@
 
 <div class="card">
 	<h1 class="text-left text-2xl font-semibold">
-		{activeCase}
+		{aktivTabell.tabellNavn.charAt(0).toUpperCase() + aktivTabell.tabellNavn.slice(1)}
 	</h1>
 
 	<div class="mt-8 self-start text-left">
@@ -68,15 +64,15 @@
 
 		<fieldset class="mt-4">
 			<div class="gap-x-12 sm:flex sm:items-center">
-				{#each casesFilters as filter}
+				{#each ['Aktiv', 'Avsluttet', 'Videresendt', 'Feilregistrert'] as filter}
 					<div class="flex items-center">
 						<input
 							id={filter}
 							name="casesFilter"
 							type="radio"
 							class="h-4 w-4 cursor-pointer border border-indigo-500 text-indigo-500 focus:ring-indigo-500"
-							checked={filter === caseFilter}
-							on:click={() => (caseFilter = filter)}
+							checked={filter === aktivtFilter}
+							on:click={() => (aktivtFilter = filter)}
 						/>
 						<label
 							for={filter}
@@ -100,14 +96,18 @@
 							<th>Opprettet den</th>
 							<th>Ansvarlig tillitsvalgt</th>
 							<th>Sakskategori</th>
-							<th>Angående medlem</th>
+							<th
+								>Angående {aktivTabell.tabellNavn !== 'individsaker'
+									? 'arbeidsplass'
+									: 'medlem'}</th
+							>
 							<th>Status</th>
 						</tr>
 					</thead>
 
 					<tbody class="divide-y divide-gray-200 text-left text-sm font-normal">
-						{#if activeCases.length > 0}
-							{#each activeCases as sak}
+						{#if filteredAktivTabell.length > 0}
+							{#each filteredAktivTabell as sak}
 								<tr class="rounded-lg hover:bg-stone-100">
 									<td class="font-medium"><a href="/saker/sak">{sak.saksnavn}</a></td>
 									<td>{sak.opprettet_dato}</td>
@@ -124,7 +124,9 @@
 								</tr>
 							{/each}
 						{:else}
-							<tr> <td class="font-medium">Ingen oppføringer med dette filteret.</td> </tr>
+							<tr>
+								<td class="font-medium">Ingen oppføringer med dette filteret.</td>
+							</tr>
 						{/if}
 					</tbody>
 				</table>
