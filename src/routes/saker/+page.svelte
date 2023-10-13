@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { slide } from 'svelte/transition'
 	import { saker, type Sak } from './saker'
+	import { Badge } from '$lib/components'
 
 	let aktivtFilter = 'Aktiv'
 
@@ -48,7 +49,10 @@
 							checked={index === 0}
 						/>
 						<h3 class="text-3xl font-bold">{getActiveCases(tabell)}</h3>
-						<h4 class="mt-3 font-medium text-gray-500">Aktive {tabellNavn}</h4>
+						<h4 class="mt-3 font-medium text-gray-500">
+							{getActiveCases(tabell) === 1 ? 'Aktiv' : 'Aktive'}
+							{tabellNavn}
+						</h4>
 					</label>
 				</button>
 				<!-- <div class="mt-2">
@@ -120,13 +124,11 @@
 									<td>{sak.opprettet_dato}</td>
 									<td>{sak.ansvarlig}</td>
 									<td>{sak.kategori}</td>
-									<td>{sak.medlem}</td>
-									<td
-										><span
-											class={sak.status === 'Aktiv'
-												? 'bg-green-50 text-green-700 ring-green-600/20'
-												: 'bg-blue-50 text-blue-700 ring-blue-700/10'}>{sak.status}</span
-										>
+									<td>{sak.medlem || sak.arbeidsplass}</td>
+									<td>
+										<Badge status={sak.status}>
+											{sak.status}
+										</Badge>
 									</td>
 								</tr>
 							{/each}

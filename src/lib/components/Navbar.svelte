@@ -1,4 +1,4 @@
-<div class="bg-white shadow">
+<div class="bg-white text-stone-800 shadow">
 	<nav class="container mx-auto flex h-16 items-center px-4 text-sm font-semibold lg:px-8">
 		<a href="/">Fagforbundet</a>
 

@@ -5,7 +5,7 @@ export type Sak = {
 	kategori: string
 	medlem?: string
 	arbeidsplass?: string
-	status: string
+	status: 'Aktiv' | 'Avsluttet' | 'Videresendt' | 'Feilregistrert'
 }
 
 const individsaker: Sak[] = [
@@ -32,6 +32,22 @@ const individsaker: Sak[] = [
 		kategori: 'Oppsigelse',
 		medlem: 'Amalie Berg',
 		status: 'Aktiv'
+	},
+	{
+		saksnavn: 'Tester feilregistrering',
+		opprettet_dato: '13. oktober 2023',
+		ansvarlig: 'Wasim Emre',
+		kategori: 'Lønnsforhandling',
+		medlem: 'Amalie Berg',
+		status: 'Feilregistrert'
+	},
+	{
+		saksnavn: 'Tester videresendt',
+		opprettet_dato: '13. oktober 2023',
+		ansvarlig: 'Wasim Emre',
+		kategori: 'Lønnsforhandling',
+		medlem: 'Amalie Berg',
+		status: 'Videresendt'
 	}
 ]
 const kollektive_saker: Sak[] = [
@@ -69,7 +85,7 @@ const underliggende_saker: Sak[] = [
 		ansvarlig: 'Bashir Khaan',
 		kategori: 'Oppsigelse',
 		arbeidsplass: 'Amalie Berg',
-		status: 'Avsluttet'
+		status: 'Aktiv'
 	}
 ]
 
