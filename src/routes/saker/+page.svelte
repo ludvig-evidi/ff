@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { slide } from 'svelte/transition'
 	import { saker, type Sak } from './saker'
 
 	let aktivtFilter = 'Aktiv'
@@ -37,18 +38,24 @@
 
 	<div class="not-prose mx-auto my-12 grid grid-cols-1 gap-6 sm:grid-cols-4">
 		{#each saker as { tabellNavn, tabell }, index}
-			<button on:click={() => changeTable(index)}>
-				<label class="card caseCard cursor-pointer">
-					<input
-						class="box-content hidden h-full w-full"
-						name="visibility"
-						type="radio"
-						checked={index === 0}
-					/>
-					<h3 class="text-3xl font-bold">{getActiveCases(tabell)}</h3>
-					<h4 class="mt-3 font-medium text-gray-500">Aktive {tabellNavn}</h4>
-				</label>
-			</button>
+			<div>
+				<button class="w-full" on:click={() => changeTable(index)}>
+					<label class="card caseCard cursor-pointer">
+						<input
+							class="box-content hidden h-full w-full"
+							name="visibility"
+							type="radio"
+							checked={index === 0}
+						/>
+						<h3 class="text-3xl font-bold">{getActiveCases(tabell)}</h3>
+						<h4 class="mt-3 font-medium text-gray-500">Aktive {tabellNavn}</h4>
+					</label>
+				</button>
+				<!-- <div class="mt-2">
+					<button class="border border-black">Vis saker</button>
+					<button class="border border-black">Ny sak</button>
+				</div> -->
+			</div>
 		{/each}
 	</div>
 </section>
@@ -60,7 +67,7 @@
 
 	<div class="mt-8 self-start text-left">
 		<label for="" class="text-base font-semibold"> Status </label>
-		<p class="text-sm text-gray-600">Filtrer hvilke saker som skal vises.</p>
+		<p class="text-sm text-gray-600">Filtrer hvilke saker som skal vises</p>
 
 		<fieldset class="mt-4">
 			<div class="gap-x-12 sm:flex sm:items-center">
