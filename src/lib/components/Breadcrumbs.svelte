@@ -9,7 +9,9 @@
 
 	{#if breadcrumbs}
 		{#each breadcrumbs as breadcrumb}
-			<span class="select-none">></span>
+			{#if breadcrumb !== ''}
+				<span class="select-none">></span>
+			{/if}
 			<li><a href="/{breadcrumb}" class="text-sm font-semibold capitalize">{breadcrumb}</a></li>
 		{/each}
 	{/if}

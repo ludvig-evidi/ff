@@ -1,16 +1,16 @@
 <script lang="ts">
-	import { slide } from 'svelte/transition'
 	import { saker, type Sak } from './saker'
-	import { Badge } from '$lib/components'
+	import { Badge, Dialog } from '$lib/components'
 
 	let aktivtFilter = 'Aktiv'
 
-	$: aktivTabell = saker[0]
+	$: aktivTabellIndex = 0
+	$: aktivTabell = saker[aktivTabellIndex]
 	$: filteredAktivTabell = aktivTabell.tabell.filter((kolonne) => kolonne.status === aktivtFilter)
 
 	function changeTable(index: number) {
 		aktivtFilter = 'Aktiv'
-		aktivTabell = saker[index]
+		aktivTabellIndex = index
 	}
 
 	function getActiveCases(tabell: Sak[]) {
@@ -37,29 +37,50 @@
 		<p class="lead">Trykk på en sakskategori for å se sakene i tabellen.</p>
 	</div>
 
-	<div class="not-prose mx-auto my-12 grid grid-cols-1 gap-6 sm:grid-cols-4">
+	<div class="not-prose mx-auto mb-10 mt-12 grid grid-cols-1 gap-6 sm:grid-cols-4">
 		{#each saker as { tabellNavn, tabell }, index}
-			<div>
-				<button class="w-full" on:click={() => changeTable(index)}>
-					<label class="card caseCard cursor-pointer">
-						<input
-							class="box-content hidden h-full w-full"
-							name="visibility"
-							type="radio"
-							checked={index === 0}
-						/>
-						<h3 class="text-3xl font-bold">{getActiveCases(tabell)}</h3>
-						<h4 class="mt-3 font-medium text-gray-500">
-							{getActiveCases(tabell) === 1 ? 'Aktiv' : 'Aktive'}
-							{tabellNavn}
-						</h4>
-					</label>
-				</button>
-				<!-- <div class="mt-2">
-					<button class="border border-black">Vis saker</button>
-					<button class="border border-black">Ny sak</button>
-				</div> -->
-			</div>
+			<button on:click={() => changeTable(index)} class="flex w-full flex-col">
+				<label
+					class="caseCard h-full w-full border {aktivTabellIndex === index
+						? 'border-red-800/10 border-b-red-500/40 bg-red-600 text-white'
+						: 'border-zinc-200 border-b-zinc-200/40 bg-white'}"
+				>
+					<input class="hidden" name="visibility" type="radio" checked={index === 0} />
+					<h3 class="text-3xl font-bold">{getActiveCases(tabell)}</h3>
+					<h4
+						class="mt-3 text-sm font-medium text-gray-500 sm:text-base"
+						class:text-white={aktivTabellIndex === index}
+					>
+						{getActiveCases(tabell) === 1 ? 'Aktiv' : 'Aktive'}
+						{tabellNavn}
+					</h4>
+				</label>
+
+				<div
+					class="flex w-full justify-center gap-4 rounded-b-lg border border-t-0 py-4 {aktivTabellIndex ===
+					index
+						? 'border-red-800/10 bg-red-600'
+						: 'border-zinc-200 bg-white'}"
+				>
+					{#if index !== 3}
+						<button
+							class="btn rounded-md px-4 py-2 text-sm font-semibold"
+							class:text-white={aktivTabellIndex === index}>Vis saker</button
+						>
+
+						<Dialog
+							{index}
+							classes={aktivTabellIndex === index
+								? 'bg-white text-red-600 hover:bg-red-50 hover:text-red-700'
+								: 'bg-red-600 text-white'}>Ny sak</Dialog
+						>
+					{:else}
+						<button class="btn rounded-md bg-red-600 px-4 py-2 text-sm font-semibold text-white"
+							>Søk saker</button
+						>
+					{/if}
+				</div>
+			</button>
 		{/each}
 	</div>
 </section>
@@ -69,32 +90,58 @@
 		{aktivTabell.tabellNavn.charAt(0).toUpperCase() + aktivTabell.tabellNavn.slice(1)}
 	</h1>
 
-	<div class="mt-8 self-start text-left">
-		<label for="" class="text-base font-semibold"> Status </label>
-		<p class="text-sm text-gray-600">Filtrer hvilke saker som skal vises</p>
+	<div class="mt-8 flex gap-x-36 text-left">
+		<div>
+			<label for="casesFilter" class="text-base font-semibold"> Status </label>
+			<p class="text-sm text-gray-600">Filtrer saker på sakstatus</p>
 
-		<fieldset class="mt-4">
-			<div class="gap-x-12 sm:flex sm:items-center">
-				{#each ['Aktiv', 'Avsluttet', 'Videresendt', 'Feilregistrert'] as filter}
-					<div class="flex items-center">
-						<input
-							id={filter}
-							name="casesFilter"
-							type="radio"
-							class="h-4 w-4 cursor-pointer border border-indigo-500 text-indigo-500 focus:ring-indigo-500"
-							checked={filter === aktivtFilter}
-							on:click={() => (aktivtFilter = filter)}
-						/>
-						<label
-							for={filter}
-							class="ml-3 block cursor-pointer text-sm font-medium capitalize leading-6"
-						>
-							{filter}
-						</label>
-					</div>
-				{/each}
-			</div>
-		</fieldset>
+			<fieldset class="ml-1 mt-2">
+				<div class="flex items-baseline gap-x-12 space-y-4">
+					{#each ['Aktiv', 'Avsluttet', 'Videresendt', 'Feilregistrert'] as filter}
+						<div class="flex items-center">
+							<input
+								id={filter}
+								name="casesFilter"
+								type="radio"
+								class="h-4 w-4 cursor-pointer border border-indigo-500 text-indigo-500 focus:ring-indigo-500"
+								checked={filter === aktivtFilter}
+								on:click={() => (aktivtFilter = filter)}
+							/>
+							<label
+								for={filter}
+								class="ml-2.5 block cursor-pointer text-sm font-medium capitalize leading-6"
+							>
+								{filter}
+							</label>
+						</div>
+					{/each}
+				</div>
+			</fieldset>
+		</div>
+
+		<div>
+			<label for="caseVerv" class="text-base font-semibold"> Verv </label>
+			<p class="text-sm text-gray-600">Filtrer saker på ditt verv</p>
+
+			<fieldset class="ml-1 mt-2">
+				<div class="flex flex-wrap items-baseline gap-x-12 space-y-4">
+					{#each ['Drømmehager styremedl.', 'Avd. blå styreleder'] as filter}
+						<div class="flex items-center">
+							<input
+								id={filter}
+								name="vervFilter"
+								type="checkbox"
+								checked
+								class="h-4 w-4 cursor-pointer rounded border-indigo-500 text-indigo-500 hover:bg-gray-100 focus:outline-0 focus:ring-0 active:outline-none"
+							/>
+							<label for={filter} class="ml-2.5 block cursor-pointer text-sm font-medium leading-6">
+								{filter}
+							</label>
+						</div>
+					{/each}
+				</div>
+			</fieldset>
+		</div>
 	</div>
 
 	<div class="mt-10 flow-root">
@@ -146,19 +193,7 @@
 
 <style lang="postcss">
 	.caseCard {
-		@apply text-center transition;
-	}
-
-	.caseCard:has(:checked) {
-		@apply border-red-900/20 bg-red-600;
-
-		h3 {
-			@apply text-white;
-		}
-
-		h4 {
-			@apply text-red-50;
-		}
+		@apply mx-auto flex h-fit w-full cursor-pointer flex-col rounded-t-lg  border  p-4  py-5  shadow-md lg:px-8;
 	}
 
 	.sakerTabell {
@@ -168,10 +203,6 @@
 
 		td {
 			@apply whitespace-nowrap py-4 pl-4 pr-3 sm:pl-0;
-
-			span {
-				@apply inline-flex items-center rounded-md px-2 py-1 text-xs font-medium ring-1 ring-inset;
-			}
 		}
 	}
 </style>
