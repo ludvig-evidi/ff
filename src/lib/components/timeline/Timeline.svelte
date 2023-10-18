@@ -14,7 +14,7 @@
 	}
 </script>
 
-<div class="card card_timeline max-w-sm">
+<div class="card card_timeline mx-0">
 	<h3>
 		<Calendar /> Hendelser
 	</h3>
@@ -33,3 +33,9 @@
 </div>
 
 <!-- {trimHendelser.length !== hendelser.length ? 'Neste hendelse' : 'Nullstill'} -->
+
+<style lang="postcss">
+	.card_timeline h3 {
+		@apply inline-flex items-center gap-x-4 text-lg font-semibold text-gray-900 first:mb-5 last:mt-5;
+	}
+</style>
