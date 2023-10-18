@@ -9,14 +9,14 @@
 	} = createAccordion()
 </script>
 
-<div use:melt={$root} class="-my-5 text-start">
+<div use:melt={$root} class="-my-6 text-start {$isSelected('item-1') && '-mb-2'}">
 	<div use:melt={$item('item-1')}>
 		<div
 			use:melt={$trigger('item-1')}
 			class="my-6 flex cursor-pointer items-center justify-between"
 		>
 			<div>
-				<h3 class="text-base font-semibold leading-7 text-gray-900">
+				<h3 class="text-lg font-semibold leading-7 text-gray-900">
 					Individsak - Tester skjema for individsak
 				</h3>
 				<p class="mt-1 max-w-2xl text-sm leading-6 text-gray-500">Detaljer om sak og relasjoner.</p>
