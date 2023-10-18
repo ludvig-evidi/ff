@@ -10,6 +10,15 @@
 			<InformationCard />
 		</div>
 
+		<!-- Oppgaver -->
+		<div class="card">
+			<h2 class="text-base font-semibold leading-7 text-gray-900">Oppgaver</h2>
+
+			<p class="mt-2 max-w-2xl text-sm leading-6 text-gray-500">
+				Du har ingen oppgaver knyttet til denne saken.
+			</p>
+		</div>
+
 		<!-- Dokumenter -->
 		<div class="card">
 			<h2 class="text-base font-semibold leading-7 text-gray-900">Dokumenter</h2>
