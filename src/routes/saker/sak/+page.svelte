@@ -18,14 +18,14 @@
 				Det finnes ingen dokumenter på denne saken.
 			</p>
 
-			<button class="mt-8">+ Nytt dokument</button>
+			<button class="btn mt-8">+ Nytt dokument</button>
 		</div>
 
 		<!-- Notater -->
 		<div class="card">
 			<h2 class="text-base font-semibold leading-7 text-gray-900">Notater</h2>
 
-			<button class="mt-8">+ Nytt notat</button>
+			<button class="btn mt-8">+ Nytt notat</button>
 
 			<div class="mt-8 flow-root overflow-x-auto">
 				<table class="w-full">
