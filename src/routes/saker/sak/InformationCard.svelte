@@ -49,33 +49,45 @@
 						<div class="px-1 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
 							<dt class="text-sm font-medium leading-6 text-gray-900">Tillitsvalgt</dt>
 							<dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-								Bashir Klubbstyremedlem
+								Bashir Khaan
+							</dd>
+						</div>
+						<div class="px-1 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+							<dt class="text-sm font-medium leading-6 text-gray-900">Medlem</dt>
+							<dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+								Amalie Berg
 							</dd>
 						</div>
 						<div class="px-1 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
 							<dt class="text-sm font-medium leading-6 text-gray-900">Ansettelsesforhold</dt>
 							<dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-								Kjøkkenassistent Amalie
+								Kjøkkenassistent
 							</dd>
 						</div>
 						<div class="px-1 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
 							<dt class="text-sm font-medium leading-6 text-gray-900">Kategori</dt>
 							<dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-								Fortrinnsrett/Ansettelse
+								Fortrinnsrett / Ansettelse
 							</dd>
 						</div>
 						<div class="px-1 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
 							<dt class="text-sm font-medium leading-6 text-gray-900">Beskrivelse</dt>
 							<dd class="prose mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-								Dette er en test av skjemaet for en individsak knyttet til ansettelsesforholdet til
-								Kjøkkenassistent Amalie. Bashir, som er et klubbstyremedlem, er ansvarlig for denne
-								saken. Saken er nå avsluttet.
+								Dette er en test av skjemaet for individsak knyttet Amalie med ansettelsesforholdet
+								kjøkkenassistent. Klubbstyremedlem Bashir er ansvarlig for saken. Saken er
+								avsluttet.
 							</dd>
 						</div>
 						<div class="flex items-center gap-4 px-1 py-6 sm:grid sm:grid-cols-3 sm:px-0">
 							<dt class="text-sm font-medium leading-6 text-gray-900">Status</dt>
 							<dd class="text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
 								<Badge status="Avsluttet">Avsluttet</Badge>
+							</dd>
+						</div>
+						<div class="px-1 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+							<dt class="text-sm font-medium leading-6 text-gray-900">Avslutningsnotat</dt>
+							<dd class="prose mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+								Amalie fikk fast ansettelse jf. §14-5.
 							</dd>
 						</div>
 					</dl>
