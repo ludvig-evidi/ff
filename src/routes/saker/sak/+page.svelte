@@ -1,6 +1,16 @@
 <script>
-	import { Timeline } from '$lib/components'
+	import { Table, Timeline } from '$lib/components'
 	import InformationCard from './InformationCard.svelte'
+
+	const oppgaver = [
+		{
+			navn: 'Testing Relationship',
+			stilling: 'This is a test.',
+			epost: 'Wasim Klubbleder Einstein',
+			rolle: 'Ikke startet',
+			cta: '17. oktober 2023'
+		}
+	]
 </script>
 
 <div class="container flex gap-8">
@@ -11,58 +21,26 @@
 		</div>
 
 		<!-- Oppgaver -->
-		<div class="card">
-			<h2 class="text-base font-semibold leading-7 text-gray-900">Oppgaver</h2>
-
-			<p class="mt-2 max-w-2xl text-sm leading-6 text-gray-500">
-				Du har ingen oppgaver knyttet til denne saken.
-			</p>
-		</div>
+		<Table
+			tableHeaders={['Oppgave', 'Sammendrag', 'Tillitsvalgt', 'Status', 'Frist']}
+			tableRows={oppgaver}
+		>
+			<span slot="title">Oppgaver</span>
+			<span slot="description">Liste over oppgaver tilknyttet denne saken.</span>
+			<span slot="cta">+ Ny oppgave</span>
+		</Table>
 
 		<!-- Dokumenter -->
-		<div class="card">
-			<h2 class="text-base font-semibold leading-7 text-gray-900">Dokumenter</h2>
-
-			<p class="mt-2 max-w-2xl text-sm leading-6 text-gray-500">
-				Det finnes ingen dokumenter på denne saken.
-			</p>
-
-			<button class="btn mt-8">+ Nytt dokument</button>
-		</div>
+		<Table>
+			<span slot="title">Dokumenter</span>
+			<span slot="cta">+ Nytt dokument</span>
+		</Table>
 
 		<!-- Notater -->
-		<div class="card">
-			<h2 class="text-base font-semibold leading-7 text-gray-900">Notater</h2>
-
-			<button class="btn mt-8">+ Nytt notat</button>
-
-			<div class="mt-8 flow-root overflow-x-auto">
-				<table class="w-full">
-					<thead>
-						<tr>
-							<th class="whitespace-nowrap py-3.5 pr-3 text-left text-sm font-semibold">Navn</th>
-							<th class="whitespace-nowrap py-3.5 pr-3 text-left text-sm font-semibold"
-								>Beskrivelse</th
-							>
-							<th class="whitespace-nowrap py-3.5 pr-3 text-left text-sm font-semibold"
-								>Opprettet av</th
-							>
-							<th class="whitespace-nowrap py-3.5 pr-3 text-left text-sm font-semibold"
-								>Opprettet den</th
-							>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td />
-						</tr>
-					</tbody>
-				</table>
-				<p class="max-w-2xl text-sm leading-6 text-gray-500">
-					Det finnes ingen oppføringer å vise.
-				</p>
-			</div>
-		</div>
+		<Table>
+			<span slot="title">Notater</span>
+			<span slot="cta">+ Nytt notat</span>
+		</Table>
 
 		<!-- Tidslinje -->
 		<div class="block lg:hidden">

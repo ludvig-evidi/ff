@@ -6,7 +6,7 @@
 	const {
 		elements: { content, item, trigger, root },
 		helpers: { isSelected }
-	} = createAccordion({ defaultValue: 'item-1' })
+	} = createAccordion()
 </script>
 
 <div use:melt={$root} class="-my-6 text-start {$isSelected('item-1') && '-mb-2'}">

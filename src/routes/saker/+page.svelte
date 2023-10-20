@@ -147,19 +147,19 @@
 	<div class="mt-10 flow-root">
 		<div class="-mx-4 -mt-2 overflow-x-auto sm:-mx-6">
 			<div class="inline-block min-w-full py-2 align-middle sm:px-6">
-				<table class="sakerTabell min-w-full">
+				<table class="sakerTabell min-w-full table-fixed">
 					<thead class="text-left text-sm font-semibold">
 						<tr>
-							<th>Saksnavn</th>
-							<th>Opprettet den</th>
-							<th>Ansvarlig tillitsvalgt</th>
-							<th>Sakskategori</th>
-							<th
+							<th class="sm:w-1/6">Saksnavn</th>
+							<th class="sm:w-1/6">Opprettet den</th>
+							<th class="sm:w-1/6">Ansvarlig tillitsvalgt</th>
+							<th class="sm:w-1/6">Sakskategori</th>
+							<th class="sm:w-1/6"
 								>Angående {aktivTabell.tabellNavn !== 'individsaker'
 									? 'arbeidsplass'
 									: 'medlem'}</th
 							>
-							<th>Status</th>
+							<th class="sm:w-1/6">Status</th>
 						</tr>
 					</thead>
 

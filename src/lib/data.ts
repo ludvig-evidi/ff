@@ -18,16 +18,16 @@ export const hendelser: Hendelser = [
 	{
 		dato: '27. september 2023',
 		tittel: 'Ansvarlig tillitsvalgt endret',
-		beskrivelse: 'Wasim endret ansvarlig tillitsvalgt fra Amalie til Aisha.'
+		beskrivelse: 'Wasim endret ansvarlig tillitsvalgt fra Amalie til Bashir.'
 	},
 	{
 		dato: '2. oktober 2023',
 		tittel: 'Status endret',
-		beskrivelse: 'Aisha endret status fra aktiv til videresendt.'
+		beskrivelse: 'Bashir endret status fra aktiv til videresendt.'
 	},
 	{
 		dato: '4. oktober 2023',
 		tittel: 'Sak avsluttet',
-		beskrivelse: 'Aisha avsluttet saken.'
+		beskrivelse: 'Bashir avsluttet saken.'
 	}
 ]
