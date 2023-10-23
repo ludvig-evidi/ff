@@ -33,7 +33,7 @@
 
 				<div class="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
 					<button
-						class="hover:ring-zinc-900/15 rounded-md bg-zinc-50 px-3 py-2 text-sm font-semibold text-gray-700 ring-1 ring-zinc-900/10 hover:bg-zinc-100"
+						class="hover:ring-zinc-900/15 rounded-md bg-red-500 px-3 py-2 text-sm font-semibold text-white ring-1 ring-red-600 hover:bg-red-600 hover:ring-red-700"
 						><slot name="cta">CTA</slot></button
 					>
 				</div>
