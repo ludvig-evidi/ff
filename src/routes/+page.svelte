@@ -1,7 +1,12 @@
+<script>
+	import Table from '$lib/components/Table.svelte'
+</script>
+
 <div class="grid min-h-full w-full place-content-center">
 	<h1 class="mb-8 text-center text-4xl font-semibold tracking-tight">
 		Velkommen til Klubbstyrets arbeidsrom
 	</h1>
+
 	<div class="grid grid-cols-2 grid-rows-2 gap-4">
 		<!-- Medlemmer -->
 		<div class="card">
@@ -86,6 +91,12 @@
 			</div>
 			<h1>Saker</h1>
 		</a>
+	</div>
+
+	<div class="mt-20">
+		<Table>
+			<span slot="title">Oppgaver</span>
+		</Table>
 	</div>
 </div>
 

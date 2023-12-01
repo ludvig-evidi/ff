@@ -173,7 +173,7 @@
 									<td>{sak.kategori}</td>
 									<td>{sak.medlem || sak.arbeidsplass}</td>
 									<td>
-										<Badge status={sak.status}>
+										<Badge color={sak.status === 'Aktiv' ? 'green' : 'blue'}>
 											{sak.status}
 										</Badge>
 									</td>

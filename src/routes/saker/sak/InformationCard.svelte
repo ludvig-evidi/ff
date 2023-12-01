@@ -46,7 +46,7 @@
 								Tester skjema for individsak
 							</dd>
 						</div> -->
-						<div class="px-1 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+						<div class=" py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
 							<dt class="text-sm font-medium leading-6 text-gray-900">Tillitsvalgt</dt>
 							<dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
 								Bashir Khaan
@@ -81,7 +81,7 @@
 						<div class="flex items-center gap-4 px-1 py-6 sm:grid sm:grid-cols-3 sm:px-0">
 							<dt class="text-sm font-medium leading-6 text-gray-900">Status</dt>
 							<dd class="text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-								<Badge status="Avsluttet">Avsluttet</Badge>
+								<Badge color="blue">Avsluttet</Badge>
 							</dd>
 						</div>
 						<div class="px-1 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">

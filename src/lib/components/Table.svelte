@@ -12,6 +12,8 @@
 				cta: string
 		  }[]
 		| undefined = undefined
+
+	export let disabled: boolean = true
 </script>
 
 <div class="rounded-lg border border-zinc-200 bg-white py-10 shadow-md">
@@ -33,6 +35,7 @@
 
 				<div class="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
 					<button
+						class:disabled
 						class="hover:ring-zinc-900/15 rounded-md bg-red-500 px-3 py-2 text-sm font-semibold text-white ring-1 ring-red-600 hover:bg-red-600 hover:ring-red-700"
 						><slot name="cta">CTA</slot></button
 					>
@@ -61,7 +64,7 @@
 												<td>{row.navn}</td>
 												<td>{row.stilling}</td>
 												<td>{row.epost}</td>
-												<td><Badge status="Videresendt">{row.rolle}</Badge></td>
+												<td><Badge color="yellow">{row.rolle}</Badge></td>
 												<td>{row.cta}</td>
 											</tr>
 										{/each}
@@ -87,5 +90,9 @@
 		a {
 			@apply text-right font-medium text-indigo-600;
 		}
+	}
+
+	.disabled {
+		@apply hidden;
 	}
 </style>
