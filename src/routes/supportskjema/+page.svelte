@@ -150,7 +150,7 @@
 				</div>
 
 				<p
-					class="mt-3 pb-6 flex text-sm leading-6 gap-1 w-full sm:whitespace-nowrap text-gray-600 h-12"
+					class="mt-3 pb-6 flex text-sm leading-6 gap-1 w-full overflow-hidden sm:whitespace-nowrap text-gray-600 h-12"
 				>
 					<span class="whitespace-nowrap">Vennligst beskriv</span>
 					{#key inquiryDescription}
