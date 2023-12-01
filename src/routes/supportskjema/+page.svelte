@@ -27,9 +27,9 @@
 	}
 </script>
 
-<form class="max-w-4xl">
-	<hgroup class="mt-16 mb-8">
-		<h1 class="text-base font-semibold leading-7 text-gray-900">Skjema</h1>
+<form class="max-w-4xl mt-4">
+	<hgroup>
+		<h1 class="text-base font-semibold leading-7 text-gray-900">Support</h1>
 		<p class="mt-1 text-sm leading-6 text-gray-600">
 			Bruk dette skjema til å melde om feil, ønske om endring av funksjon eller nye funksjoner.
 		</p>
@@ -144,13 +144,15 @@
 					<textarea
 						id="about"
 						name="about"
-						rows="3"
+						rows="4"
 						class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
 					></textarea>
 				</div>
 
-				<p class="mt-3 pb-6 flex text-sm leading-6 w-full whitespace-nowrap text-gray-600 h-12">
-					Vennligst beskriv 
+				<p
+					class="mt-3 pb-6 flex text-sm leading-6 gap-1 w-full sm:whitespace-nowrap text-gray-600 h-12"
+				>
+					<span class="whitespace-nowrap">Vennligst beskriv</span>
 					{#key inquiryDescription}
 						<span
 							class="inline-flex"
