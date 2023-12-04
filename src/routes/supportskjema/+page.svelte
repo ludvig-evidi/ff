@@ -1,10 +1,9 @@
 <script lang="ts">
 	import { fly } from 'svelte/transition'
 
-	const inquires: string[] = ['Feil i system', 'Endring av funksjon', 'Ønske om ny funksjon']
+	const inquires = ['Feil i system', 'Endring av funksjon', 'Ønske om ny funksjon', 'GDPR-avvik']
 
-	let selectedInquiryType: string = inquires[0]
-
+	let selectedInquiryType = inquires[0]
 	let inquiryDescription: string
 
 	$: switch (selectedInquiryType) {
@@ -22,7 +21,9 @@
 				'ønsket funksjon så godt du klarer. Vi tar kontakt dersom vi trenger mer informasjon.'
 			break
 
-		default:
+		case inquires[3]:
+			inquiryDescription =
+				'hvor du fant personvernsavviket. Legg ved andre detaljer du tenker er relevant.'
 			break
 	}
 </script>
@@ -156,8 +157,8 @@
 					{#key inquiryDescription}
 						<span
 							class="inline-flex"
-							in:fly|global={{ y: -10, delay: 300, duration: 300 }}
-							out:fly|global={{ y: 10, duration: 300 }}>{inquiryDescription}</span
+							in:fly={{ y: -10, delay: 300, duration: 300 }}
+							out:fly={{ y: 10, duration: 300 }}>{inquiryDescription}</span
 						>
 					{/key}
 				</p>
@@ -165,7 +166,7 @@
 		</section>
 	</div>
 
-	<!-- Send -->
+	<!-- Send knapp -->
 	<div class="pt-12 justify-end min-w-full flex">
 		<div class="flex gap-4 text-sm">
 			<button
